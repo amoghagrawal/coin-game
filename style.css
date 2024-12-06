@@ -1,0 +1,221 @@
+@font-face {
+    font-family: 'PlanesValMore';
+    src: url('Planes_ValMore.ttf') format('truetype');
+}
+
+body { 
+    margin: 0;
+    overflow: hidden;
+    background-image: url('images/origbig.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'PlanesValMore', Arial, sans-serif;
+}
+
+.player {
+    width: 100px;
+    height: 160px;
+    position: absolute;
+    transition: transform 0.1s, bottom 0.3s ease-out;
+    display: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    transform-origin: center;
+}
+
+.player.facing-left {
+    transform: scaleX(-1);
+}
+
+.player.facing-right {
+    transform: scaleX(1);
+}
+
+.player.frozen {
+    filter: brightness(0.7) sepia(1) hue-rotate(160deg);
+    opacity: 0.8;
+}
+
+#player1 {
+    background-image: url('images/1.png');
+    left: 100px;
+    bottom: 50px;
+}
+
+#player2 {
+    background-image: url('images/2.png');
+    left: 200px;
+    bottom: 50px;
+}
+
+.coin {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    animation: rotate 1s infinite linear;
+    transition: top 0.016s linear;
+}
+
+.coin.silver {
+    filter: saturate(0) brightness(1.2);
+}
+
+.powerup {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: top 0.016s linear;
+}
+
+.powerup.tooth {
+    background-image: url('images/tooth.png');
+}
+
+.powerup.potion {
+    background-image: url('images/potion.png');
+}
+
+.ground {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-image: url('images/tile95.png');
+    background-repeat: repeat-x;
+    background-size: 50px 50px;
+    image-rendering: pixelated;
+    will-change: transform; 
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform-style: preserve-3d; 
+    display: none;
+    contain: layout paint size; 
+    z-index: 1;
+}
+
+@media (min-width: 1200px) {
+    .ground {
+        width: 100vw;
+        transform: translate3d(0,0,0);
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes jump {
+    0% { bottom: 50px; }
+    50% { bottom: 150px; }
+    100% { bottom: 50px; }
+}
+
+.jumping {
+    animation: jump 0.6s ease-out;
+}
+
+#scoreboard {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 100;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    font-family: 'PlanesValMore', Arial, sans-serif;
+    display: none;
+}
+
+#menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    font-family: 'PlanesValMore', Arial, sans-serif;
+    min-width: 400px;
+    background-image: url('images/BG.png');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #8B4513;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.menu-button {
+    display: block;
+    margin: 15px auto;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: #FFD700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'PlanesValMore', Arial, sans-serif;
+    transition: all 0.3s ease;
+    width: 80%;
+    background-image: url('images/Button BG.png');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #8B4513;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+#timer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 100;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    font-family: 'PlanesValMore', Arial, sans-serif;
+    display: none;
+}
+
+#restart-button {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    padding: 0;
+    font-size: 24px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'PlanesValMore', Arial, sans-serif;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    display: none;
+    z-index: 100;
+}
+
+.game-over-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.winner-text {
+    font-size: 36px;
+    margin: 20px 0;
+    color: #FFD700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}

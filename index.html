@@ -1,0 +1,36 @@
+<html><head><base href="." /><title>Catch the Coin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<audio id="backgroundMusic" loop>
+    <source src="sounds/background-music.mp3" type="audio/mpeg">
+</audio>
+<audio id="coinSound">
+    <source src="sounds/coins.wav" type="audio/wav">
+</audio>
+<audio id="selectSound">
+    <source src="sounds/select-ui.wav" type="audio/wav">
+</audio>
+<div id="menu">
+    <h1>Catch the Coin</h1>
+    <div id="main-menu">
+        <h2>Select Game Duration</h2>
+        <button class="menu-button" data-duration="60">1 Minute</button>
+        <button class="menu-button" data-duration="120">2 Minutes</button>
+        <button class="menu-button" data-duration="300">5 Minutes</button>
+    </div>
+</div>
+
+<div id="timer">Time: <span id="time">0:00</span></div>
+<button id="restart-button">Restart Game</button>
+
+<div id="scoreboard">
+    Player: <span id="score1">0</span><br>
+    Bot: <span id="score2">0</span>
+</div>
+<div class="ground"></div>
+<div id="player1" class="player"></div>
+<div id="player2" class="player"></div>
+
+<script src="script.js"></script>
+</body></html>
